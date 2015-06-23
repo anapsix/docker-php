@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-if [ "$1" == "--upgrade" ]; then
+if [ "$1" == "--upgrade" ] || [ "$1" == "--install" ]; then
   shift 1
   echo "Resolving dependencies.." >&2
 	composer.phar update >&2
