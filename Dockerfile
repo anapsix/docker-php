@@ -13,6 +13,7 @@ ONBUILD RUN if [ -e ./deps.apk ]; then apk update && grep -v "^#\|^$" ./deps.apk
 ONBUILD RUN if [ -x ./deps.sh ]; then ./deps.sh; else echo "no ./deps.sh file found, skipping script execution" >&2; fi
 ONBUILD RUN cd /app && composer update && composer install
 
+VOLUME /app
 WORKDIR /app
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["/bin/sh"]
