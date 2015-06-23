@@ -1,0 +1,7 @@
+{
+	"name": "Example",
+  "require": {
+    "abbert/helloworld"  : "*",
+    "ext-curl"           : "*"
+  }
+}
