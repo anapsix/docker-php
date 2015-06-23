@@ -13,10 +13,10 @@ If you need to run PHP scripts inside containers, but don't want the bulk of Ubu
 
         docker run -it --rm -v $(pwd):/app anapsix/php --upgrade ./script_name.php
 
-    - make your own image based on this one like so (see ./example):
+  - make your own image based on this one like so (see ./example):
 
-            FROM anapsix/php
-            CMD ["./myscript.php"]
+        FROM anapsix/php
+        CMD ["./myscript.php"]
 
 
 ### Building FROM anapsix/php
