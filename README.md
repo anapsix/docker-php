@@ -30,7 +30,7 @@ place package names (one per line, comments and empty lines are ignored) into
 `./deps.apk`. It will be checked for during the build and packages will be
 installed via `apk`.  
 
-> For list of available packages see http://pkgs.alpinelinux.org/packages.   
+> For list of available packages see [http://pkgs.alpinelinux.org/packages](http://pkgs.alpinelinux.org/packages).
 
 For additional convenience, if `./deps.sh` exists and __is executable__, it
 will be run after `./deps.apk` is processed. This should allow you to install
