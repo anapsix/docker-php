@@ -1,20 +1,21 @@
 # anapsix/php
-FROM alpine
+FROM alpine:latest
 MAINTAINER Anastas Dancha <anapsix@random.io>
-RUN apk upgrade --update && apk add php-cli php-openssl php-json php-phar php-curl git curl
-RUN [ -e /usr/local/bin/composer.phar ] || \
+RUN apk upgrade --update && apk add php-cli php-openssl php-json php-phar php-curl git curl && \
+    [ -e /usr/local/bin/composer.phar ] || \
     curl -sS https://getcomposer.org/installer | php -- --install-dir /usr/local/bin && \
     [ -e /usr/local/bin/composer.phar ] && \
     ln -s /usr/local/bin/composer.phar /usr/local/bin/composer
-ADD ./docker-entrypoint.sh /entrypoint.sh
+COPY *.sh /
 
-ONBUILD ADD . /app
-ONBUILD RUN if [ -e ./deps.apk ]; then apk update && grep -v "^#\|^$" ./deps.apk | xargs apk add; else echo "no ./deps.apk file found, skipping dependecy installation"; fi
-ONBUILD RUN if [ -x ./deps.sh ]; then ./deps.sh; else echo "no ./deps.sh file found, skipping script execution" >&2; fi
-ONBUILD RUN cd /app && composer update && composer install
-
-VOLUME /app
 WORKDIR /app
+ONBUILD ADD . /app
+ONBUILD RUN cd /app && \
+            /install_deps.sh && \
+            composer update && \
+            composer install -d /app && \
+            /cleanup_deps.sh
+VOLUME /app
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["/bin/sh"]
 
