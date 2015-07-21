@@ -1,7 +1,7 @@
 # anapsix/php
 FROM alpine
 MAINTAINER Anastas Dancha <anapsix@random.io>
-RUN apk update && apk add php-cli php-openssl php-json php-phar php-curl git curl
+RUN apk upgrade --update && apk add php-cli php-openssl php-json php-phar php-curl git curl
 RUN [ -e /usr/local/bin/composer.phar ] || \
     curl -sS https://getcomposer.org/installer | php -- --install-dir /usr/local/bin && \
     [ -e /usr/local/bin/composer.phar ] && \
