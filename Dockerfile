@@ -6,16 +6,17 @@ RUN apk upgrade --update && apk add php-cli php-openssl php-json php-phar php-cu
     curl -sS https://getcomposer.org/installer | php -- --install-dir /usr/local/bin && \
     [ -e /usr/local/bin/composer.phar ] && \
     ln -s /usr/local/bin/composer.phar /usr/local/bin/composer
+
 COPY *.sh /
 
-WORKDIR /app
 ONBUILD ADD . /app
 ONBUILD RUN cd /app && \
             /install_deps.sh && \
             composer update && \
-            composer install -d /app && \
+            composer install && \
             /cleanup_deps.sh
-VOLUME /app
+
+WORKDIR /app
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["/bin/sh"]
 

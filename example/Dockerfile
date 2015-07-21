@@ -1,2 +1,2 @@
 FROM anapsix/php
-CMD ["--install","./example.php"]
+CMD ["./example.php"]
