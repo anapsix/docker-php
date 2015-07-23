@@ -1,6 +1,6 @@
 ## anapsix/php
 
-Tiny (38MB) container image with basic PHP 5.6 installation and Composer,
+42MB container image with basic PHP 5.6 installation and Composer,
 based on [AlpineLinux](http://alpinelinux.org).  
 If you need to run PHP scripts inside containers,
 but don't want the bulk of Ubuntu..
