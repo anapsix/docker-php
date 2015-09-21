@@ -5,6 +5,8 @@ based on [AlpineLinux](http://alpinelinux.org).
 If you need to run PHP scripts inside containers,
 but don't want the bulk of Ubuntu..
 
+[![Build Status](https://travis-ci.org/anapsix/docker-php.svg?branch=master)](https://travis-ci.org/anapsix/docker-php)
+
 [![](https://badge.imagelayers.io/anapsix/php:latest.svg)](https://imagelayers.io/?images=anapsix/php:latest)
 
 ## Usage
